@@ -1,0 +1,79 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #161616;
+    color: #dfdfdf; /* Text color */
+}
+
+header {
+    background-color: #133610; /* Header background color */
+    color: #dfdfdf; /* Header text color */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+section {
+    padding: 20px;
+}
+
+footer {
+    background-color: #133610; /* Footer background color */
+    color: #dfdfdf; /* Footer text color */
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.dark-mode {
+    background-color: #161616; /* Dark mode background color */
+    color: #dfdfdf; /* Dark mode text color */
+}
+
+.dark-mode footer {
+    background-color: #161616; /* Dark mode footer background color */
+    color: #dfdfdf; /* Dark mode footer text color */
+}
+
+.team-member {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.team-member img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Button styles */
+button {
+    background-color: #826343; /* Button background color */
+    color: #dfdfdf; /* Button text color */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #cc9a48; /* Button background color on hover */
+}
