@@ -2,13 +2,26 @@
 
 const body = document.body;
 const modeToggleBtn = document.getElementById('mode-toggle');
-const languageSelect = document.getElementById('language-select');
+const enBtn = document.getElementById('en-btn');
+const frBtn = document.getElementById('fr-btn');
 
 // Check if dark mode is enabled
 const isDarkMode = () => body.classList.contains('dark-mode');
 
-// Get selected language from dropdown
-const getSelectedLanguage = () => languageSelect.value;
+// Check if language is currently French
+const isFrench = () => body.classList.contains('french');
+
+// Set language to English
+function setLanguageToEnglish() {
+    body.classList.remove('french');
+    updateText(); // Update text content after language change
+}
+
+// Set language to French
+function setLanguageToFrench() {
+    body.classList.add('french');
+    updateText(); // Update text content after language change
+}
 
 // Toggle between dark and light mode
 function toggleDarkMode() {
@@ -42,20 +55,27 @@ function updateText() {
         };
 
         if (translations[key]) {
-            element.textContent = translations[key][getSelectedLanguage()];
+            element.textContent = translations[key][isFrench() ? 'fr' : 'en'];
         }
     });
 }
+
+/*
 
 // Event listener for mode toggle button
 modeToggleBtn.addEventListener('click', () => {
     toggleDarkMode();
 });
+*/
 
-// Event listener for language selection change
-languageSelect.addEventListener('change', () => {
-    updateText(); // Update text content after language selection change
+// Event listener for language selection buttons
+enBtn.addEventListener('click', () => {
+    setLanguageToEnglish();
 });
 
-// Initial update of text content based on selected language
+frBtn.addEventListener('click', () => {
+    setLanguageToFrench();
+});
+
+// Initial update of text content based on default language
 updateText();
