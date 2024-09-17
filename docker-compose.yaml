@@ -1,0 +1,24 @@
+name: gamestar-website
+
+include:
+  - path: directus-config/docker-compose.yaml
+services:
+  # app:
+  #   # Build the app service from its folder
+  #   build:
+  #     # Path to Dockerfile, relative to context
+  #     dockerfile: Dockerfile.dev
+  #   environment:
+  #     NODE_ENV: development
+  #   volumes:
+  #     # Bind-mount the app project folder into the container
+  #     - type: bind
+  #       source: .
+  #       target: /app
+
+  caddy:
+    image: caddy
+    volumes:
+      - "./caddy/Caddyfile.dev:/etc/caddy/Caddyfile"
+    ports:
+      - "80:80"
