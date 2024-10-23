@@ -7,5 +7,5 @@ http://localhost:8000 {
 		reverse_proxy http://directus:8055
 	}
 
-	reverse_proxy http://app:3000
+	reverse_proxy http://app:8000
 }
