@@ -1,7 +1,7 @@
 name: gamestar-website
 
 include:
-  - path: directus-config/docker-compose.yaml
+  - path: directus-config/directus.yaml
 services:
   # app:
   #   # Build the app service from its folder
@@ -21,4 +21,4 @@ services:
     volumes:
       - "./caddy/Caddyfile.dev:/etc/caddy/Caddyfile"
     ports:
-      - "80:80"
+      - "8000:80"
