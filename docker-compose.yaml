@@ -19,6 +19,6 @@ services:
   caddy:
     image: caddy
     volumes:
-      - "./caddy/Caddyfile.dev:/etc/caddy/Caddyfile"
+      - "./Caddyfile.dev:/etc/caddy/Caddyfile"
     ports:
       - "8000:80"
