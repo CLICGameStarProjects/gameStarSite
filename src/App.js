@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { createDirectus, rest, readItems } from "@directus/sdk";
 
-const client = createDirectus("http://localhost:8000/directus").with(rest());
+const client = createDirectus(
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:8000/directus"
+    : "https://clic.epfl.ch/directus"
+).with(rest());
 
 const App = () => {
   const [articles, setArticles] = useState([]);
