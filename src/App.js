@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { createDirectus, rest, readItems } from '@directus/sdk';
+import React, { useState, useEffect } from "react";
+import { createDirectus, rest, readItems } from "@directus/sdk";
 
-const client = createDirectus('http://localhost:8000/directus').with(rest());
+const client = createDirectus("http://localhost:8000/directus").with(rest());
 
 const App = () => {
   const [articles, setArticles] = useState([]);
@@ -9,10 +9,10 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await client.request(readItems('articles'));
-        setArticles(response.data);
+        const response = await client.request(readItems("news"));
+        setArticles(response);
       } catch (error) {
-        console.error('Error fetching data from Directus:', error);
+        console.error("Error fetching data from Directus:", error);
       }
     };
 
@@ -23,8 +23,8 @@ const App = () => {
     <div>
       <h1>Articles</h1>
       <ul>
-        {articles.map(article => (
-          <li key={article.id}>{article.title}</li>
+        {articles.map((article) => (
+          <li key={article.id}>{article.slug}</li>
         ))}
       </ul>
     </div>
