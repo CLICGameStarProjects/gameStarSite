@@ -21,4 +21,4 @@ services:
     volumes:
       - "./caddy/Caddyfile.dev:/etc/caddy/Caddyfile"
     ports:
-      - "80:80"
+      - "8000:8000"
