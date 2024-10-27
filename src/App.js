@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createDirectus, rest, readItems } from "@directus/sdk";
+import Navbar from "./partials/navbar.js";
+import Home from "./pages/home.js";
 
 const client = createDirectus(
   process.env.NODE_ENV === "development"
@@ -7,14 +9,25 @@ const client = createDirectus(
     : "https://clic.epfl.ch/directus"
 ).with(rest());
 
+const collections = ['gamestar_events', 'navbar']; // List each collection you want to query
+
 const App = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await client.request(readItems("news"));
-        setArticles(response);
+        const results = {}
+        const responses = await Promise.all(
+          collections.map((collection) => client.request(readItems(collection)))
+        );
+        const responses2 = await Promise.all(
+          collections.map(async (collection) => {
+            const response = await client.request(readItems(collection));
+            results[collection] = response; // Store the data with collection name as key
+          })
+        );
+        setArticles(results);
       } catch (error) {
         console.error("Error fetching data from Directus:", error);
       }
@@ -23,14 +36,18 @@ const App = () => {
     fetchData();
   }, []);
 
+  if(articles.length !== 0) {
+    return (
+      <div className="App">
+        <Navbar items={articles.navbar} />
+        <Home events={articles.gamestar_events}/>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <h1>Articles</h1>
-      <ul>
-        {articles.map((article) => (
-          <li key={article.id}>{article.slug}</li>
-        ))}
-      </ul>
+      <h1>Articles test</h1>
     </div>
   );
 };

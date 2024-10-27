@@ -4,7 +4,7 @@ FROM node:18-bullseye
 WORKDIR /app
 
 # use "node" user with UID/GID 1000 (avoid permission issues with root)
-USER node
+# USER node
 
 ENV PORT=8000
 
