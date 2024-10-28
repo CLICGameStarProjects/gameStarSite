@@ -7,6 +7,8 @@ ENV NODE_ENV=${NODE_ENV}
 ENV DIRECTUS_URL=https://clic.epfl.ch/directus
 ENV NEXT_PUBLIC_DIRECTUS_URL=https://clic.epfl.ch/directus
 
+RUN npm install -g serve
+
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm config set fetch-retry-maxtimeout 600000 -g && npm ci
@@ -18,4 +20,4 @@ RUN npm run build
 RUN chown -R node .
 USER node
 
-CMD [ "npm", "start" ]
+CMD [ "serve", "-s", "build" ]
