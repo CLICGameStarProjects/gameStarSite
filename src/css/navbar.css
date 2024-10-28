@@ -12,6 +12,9 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between the logo and the text */
 }
 
 .navbar-links {
@@ -65,4 +68,17 @@
   .navbar-toggle {
     display: flex;
   }
+}
+
+.navbar-logo img {
+  width: 40px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 50px; /* Prevent it from growing too large */
+  padding: 5px; /* Optional padding for better spacing */
+}
+
+.navbar-logo span {
+  font-size: 1.2rem; /* Adjust font size as needed */
+  font-weight: bold;
+  color: #333; /* Adjust color to fit your design */
 }
