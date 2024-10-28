@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "prepare": "git submodule update --init",
+    "load-directus": "sh directus/load.sh",
+    "save-directus": "sh directus/save.sh",
+    "save-directus-data": "sh directus/save-data.sh",
+    "populate-directus": "sh directus/populate.sh"
+  },
+  "dependencies": {
+    "@directus/sdk": "^17.0.2"
+  }
+}
