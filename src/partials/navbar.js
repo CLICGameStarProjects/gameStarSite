@@ -14,12 +14,9 @@ const Navbar = ({ items }) => {
     <nav className="navbar">
       <div className="navbar-logo">MyLogo</div>
       <div className={`navbar-links ${isOpen ? "active" : ""}`}>
-        {items.map((item, index) => (
-          <a key={index} href={item.link}>
-             <span className="icon">{item.Icon}</span>
-             <span className="label">{item.text}</span>
-          </a>
-        ))}
+        <a href="/home">
+          <span className="label">Home</span>
+        </a>
       </div>
       <div className="navbar-toggle" onClick={toggleMenu}>
         <span className="bar"></span>

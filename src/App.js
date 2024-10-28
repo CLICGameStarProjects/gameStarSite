@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createDirectus, rest, readItems } from "@directus/sdk";
 import Navbar from "./partials/navbar.js";
 import Home from "./pages/home.js";
+import Footer from "./partials/footer.js";
 
 const client = createDirectus(
   process.env.NODE_ENV === "development"
@@ -9,7 +10,7 @@ const client = createDirectus(
     : "https://clic.epfl.ch/directus"
 ).with(rest());
 
-const collections = ['gamestar_events', 'navbar']; // List each collection you want to query
+const collections = ['gamestar_events']; // List each collection you want to query
 
 const App = () => {
   const [articles, setArticles] = useState([]);
@@ -19,9 +20,6 @@ const App = () => {
       try {
         const results = {}
         const responses = await Promise.all(
-          collections.map((collection) => client.request(readItems(collection)))
-        );
-        const responses2 = await Promise.all(
           collections.map(async (collection) => {
             const response = await client.request(readItems(collection));
             results[collection] = response; // Store the data with collection name as key
@@ -39,8 +37,9 @@ const App = () => {
   if(articles.length !== 0) {
     return (
       <div className="App">
-        <Navbar items={articles.navbar} />
+        <Navbar/>
         <Home events={articles.gamestar_events}/>
+        <Footer/>
       </div>
     );
   }

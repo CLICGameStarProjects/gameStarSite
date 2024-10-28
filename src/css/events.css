@@ -1,0 +1,42 @@
+/* src/App.css */
+
+.events {
+  padding: 20px;
+}
+
+.events h1 {
+  text-align: center;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Default to 1 column */
+  gap: 20px; /* Space between items */
+}
+
+.item-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.item-card:hover {
+  transform: scale(1.02); /* Slight zoom effect on hover */
+}
+
+/* Medium screens - two items per row */
+@media (min-width: 600px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large screens - three items per row */
+@media (min-width: 900px) {
+  .events-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
