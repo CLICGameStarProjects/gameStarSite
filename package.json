@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "git submodule update --init",
+    "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then git submodule update --init; fi",
     "load-directus": "sh directus-config/load.sh",
     "save-directus": "sh directus-config/save.sh",
     "save-directus-data": "sh directus-config/save-data.sh",
